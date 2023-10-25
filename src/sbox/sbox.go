@@ -46,16 +46,16 @@ func Lookup(b uint8) uint8 {
 }
 
 // Get the original value using the reversed s-box.
-func ReversedLookup(b uint8) uint8 {
+func ReverseLookup(b uint8) uint8 {
 	return lookup(reversedSBox, b)
 }
 
 func lookup(sBox [][]uint8, b uint8) uint8 {
-	// split the input into two tetrads.
+	// Split the input into two tetrads.
 	left := b >> 4
 	right := b & ((1 << 4) - 1)
 
-	// the first tetrad is the row of the s-box,
+	// The first tetrad is the row of the s-box,
 	// and the second tetrad is the column.
 	return sBox[left][right]
 }
